@@ -11,4 +11,8 @@ Got it! You're building "Bitcoin Sniper" - a tool to detect periodic dips in Bit
    based on the hypothesis that Bitcoin price patterns are somewhat periodic. Starting with alerts before moving
    to automated trading
 
+what research questions would you have at this time? Write them to a document.
+
+I've added a csv file of daily bitcoin prices to the data folder. See if you can have a go at answering the first few
+   research questions you listed under 'problem validation'. Write your findings to a file. 
    
