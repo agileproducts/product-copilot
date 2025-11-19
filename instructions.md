@@ -5,7 +5,7 @@ Our aim here is to demomstrate the use of github copilot (that's you) for produc
 
 ## Project structure
 * Project documents should go in the `/docs` folder. 
-* Data should go in `/data.
+* Data should go in `/data`.
 * Any code written for tactical purposes eg. research or file manipulation should go in `/code`.
 
 ## Style guide
@@ -14,7 +14,7 @@ All documents should be written in markdown. Filenames should be in dash-case. U
 If you have to write and run any python in the `/code` directory then always remember to use the virtual environment:
 
 ```bash
-source .venv/bin/activate`
+source .venv/bin/activate
 ```
 
 
