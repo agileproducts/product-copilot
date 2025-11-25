@@ -17,4 +17,21 @@ If you have to write and run any python in the `/code` directory then always rem
 source .venv/bin/activate
 ```
 
+## User stories
+
+User stories should be written using the BDD _Given, Then, When_ format. 
+
+Our engineering will practise TDD, so we should never see separate stories to 'write tests'.
+
+We try to keep our stories small, an individual story should ideally take no more than a couple of days to do.
+
+We should try to make sense of our stories and plan releases by making a story map. Make these in an SVG format.
+
+Stories should be written as github issues with a label 'story'. You can use the gh cli to create these like this:
+
+```bash
+gh issue create --label story --label backlog --title "Test story" --body "Body text"
+```
+
+I have created labels to represent the workflow of our stories - "backlog" when the story is just a title or placeholder. "ready for dev" when it is fleshed out and ready to go. "in development" when  it is being worked on.
 
