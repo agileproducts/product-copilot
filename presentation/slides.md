@@ -88,6 +88,18 @@ Out of scope clarifications: Should I explicitly list things like "no automated 
 &gt; Let's use your suggestions for dip detection. I think we'll try historical context for alerts. Let's leave the choice of SMS provider for our technical design document. Start date is - whenever we are shipped and ready, the exact day is not important. Those are the easy ones. On alert frequency - I suggest we think in terms of iteration here? State your out of scopes for now.
 </div>
 
+--
+
+<div class="copilot-response">
+Done! I've created a focused PRD covering the alert pilot phase. Key points:
+
+Alert frequency: Iteration 1 starts with no cooldown (alert every dip), with options for future iterations based on pilot learnings.
+
+Out of scope: All trading automation, portfolio tracking, multi-user, dashboards, predictions, and customisation features—keeping this strictly about alert delivery and hypothesis validation.
+
+Does this capture what you need, or would you like me to adjust anything?
+</div>
+
 ---
 
 <div class="myprompt">
@@ -225,3 +237,39 @@ Error handling and monitoring: If something goes wrong (API down, SMS fails, fun
 <div class="copilot-response">
 Yes - if there's no legitimate dip, you won't get an alert anyway, so silence could mean either "system working, no dip detected" or "system broken." You can't distinguish between the two. So you need some form of active monitoring. Would you prefer...
 </div>
+
+---
+
+<div class="myprompt">
+&gt; I've updated my instructions. Have a read
+</div>
+
+<div class="copilot-response">
+✔ Read instructions.md
+   └ 41 lines read
+
+ Noted! Key updates:
+
+  - User stories: Use BDD (Given, When, Then) format
+  - No separate test stories: TDD is expected, tests are part of the story
+  - Story size: Ideally 2 days or less
+  - Story mapping: Create in SVG format to plan releases
+  - GitHub issues: Stories should be created as issues with --label story --label backlog
+  - Workflow labels: backlog → ready for dev → in development
+
+   Ready to create a story map and start writing user stories for the Bitcoin Sniper pilot?
+</div>
+
+---
+
+<div class="myprompt">
+&gt; Try creating a story map
+</div>
+
+<div class="copilot-response">
+✔ Create docs/story-map.svg (+238)
+</div>
+
+---
+
+!["story map first attempt"](story-map-first-attempt.svg)

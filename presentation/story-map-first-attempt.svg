@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
+  <!-- Title -->
+  <text x="700" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Bitcoin Sniper - Story Map (Alert Pilot Phase)
+  </text>
+  
+  <!-- Legend -->
+  <rect x="1150" y="50" width="200" height="120" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="1250" y="70" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Legend</text>
+  <rect x="1160" y="80" width="80" height="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="1260" y="97" font-size="11" text-anchor="start" fill="#333">MVP / Release 1</text>
+  <rect x="1160" y="110" width="80" height="25" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="1260" y="127" font-size="11" text-anchor="start" fill="#333">Future iteration</text>
+  <rect x="1160" y="140" width="80" height="25" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="1260" y="157" font-size="11" text-anchor="start" fill="#333">Post-pilot</text>
+  
+  <!-- User Activities (Top Row) -->
+  <rect x="50" y="60" width="180" height="50" fill="#4a5568" rx="5"/>
+  <text x="140" y="90" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Setup System
+  </text>
+  
+  <rect x="270" y="60" width="180" height="50" fill="#4a5568" rx="5"/>
+  <text x="360" y="90" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Detect Dips
+  </text>
+  
+  <rect x="490" y="60" width="180" height="50" fill="#4a5568" rx="5"/>
+  <text x="580" y="90" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Send Alerts
+  </text>
+  
+  <rect x="710" y="60" width="180" height="50" fill="#4a5568" rx="5"/>
+  <text x="800" y="90" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Track Data
+  </text>
+  
+  <rect x="930" y="60" width="180" height="50" fill="#4a5568" rx="5"/>
+  <text x="1020" y="90" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Monitor System
+  </text>
+  
+  <!-- Release 1 / MVP Stories (Blue) -->
+  
+  <!-- Setup System Column -->
+  <rect x="50" y="140" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="140" y="160" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Configure GCP</text>
+  <text x="140" y="175" font-size="10" text-anchor="middle" fill="#555">Enable APIs, create</text>
+  <text x="140" y="188" font-size="10" text-anchor="middle" fill="#555">Firestore database</text>
+  <text x="140" y="201" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="50" y="220" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="140" y="240" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Setup Twilio (spike)</text>
+  <text x="140" y="255" font-size="10" text-anchor="middle" fill="#555">Test GCP Marketplace</text>
+  <text x="140" y="268" font-size="10" text-anchor="middle" fill="#555">integration</text>
+  <text x="140" y="281" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="50" y="300" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="140" y="320" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Setup SendGrid</text>
+  <text x="140" y="335" font-size="10" text-anchor="middle" fill="#555">Configure email</text>
+  <text x="140" y="348" font-size="10" text-anchor="middle" fill="#555">fallback service</text>
+  <text x="140" y="361" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="50" y="380" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="140" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Deploy Function</text>
+  <text x="140" y="415" font-size="10" text-anchor="middle" fill="#555">Initial Cloud Function</text>
+  <text x="140" y="428" font-size="10" text-anchor="middle" fill="#555">deployment</text>
+  <text x="140" y="441" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <!-- Detect Dips Column -->
+  <rect x="270" y="140" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="360" y="160" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Fetch Bitcoin Price</text>
+  <text x="360" y="175" font-size="10" text-anchor="middle" fill="#555">Call Coinbase API,</text>
+  <text x="360" y="188" font-size="10" text-anchor="middle" fill="#555">handle errors</text>
+  <text x="360" y="201" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="270" y="220" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="360" y="240" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Store Price Data</text>
+  <text x="360" y="255" font-size="10" text-anchor="middle" fill="#555">Write to Firestore</text>
+  <text x="360" y="268" font-size="10" text-anchor="middle" fill="#555">(spike first)</text>
+  <text x="360" y="281" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="270" y="300" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="360" y="320" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Calculate Statistics</text>
+  <text x="360" y="335" font-size="10" text-anchor="middle" fill="#555">14-day mean, std dev,</text>
+  <text x="360" y="348" font-size="10" text-anchor="middle" fill="#555">z-score</text>
+  <text x="360" y="361" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="270" y="380" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="360" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Detect Dip</text>
+  <text x="360" y="415" font-size="10" text-anchor="middle" fill="#555">Check if >1σ below</text>
+  <text x="360" y="428" font-size="10" text-anchor="middle" fill="#555">mean</text>
+  <text x="360" y="441" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <!-- Send Alerts Column -->
+  <rect x="490" y="140" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="580" y="160" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Build Alert Message</text>
+  <text x="580" y="175" font-size="10" text-anchor="middle" fill="#555">Format price, stats,</text>
+  <text x="580" y="188" font-size="10" text-anchor="middle" fill="#555">context</text>
+  <text x="580" y="201" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="490" y="220" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="580" y="240" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Send SMS Alert</text>
+  <text x="580" y="255" font-size="10" text-anchor="middle" fill="#555">Via Twilio when</text>
+  <text x="580" y="268" font-size="10" text-anchor="middle" fill="#555">dip detected</text>
+  <text x="580" y="281" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="490" y="300" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="580" y="320" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Email Fallback</text>
+  <text x="580" y="335" font-size="10" text-anchor="middle" fill="#555">Send email if SMS</text>
+  <text x="580" y="348" font-size="10" text-anchor="middle" fill="#555">fails</text>
+  <text x="580" y="361" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="490" y="380" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="580" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Schedule Daily Run</text>
+  <text x="580" y="415" font-size="10" text-anchor="middle" fill="#555">Cloud Scheduler at</text>
+  <text x="580" y="428" font-size="10" text-anchor="middle" fill="#555">08:30 London time</text>
+  <text x="580" y="441" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <!-- Track Data Column -->
+  <rect x="710" y="140" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="800" y="160" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Log Dip Events</text>
+  <text x="800" y="175" font-size="10" text-anchor="middle" fill="#555">Record all detected</text>
+  <text x="800" y="188" font-size="10" text-anchor="middle" fill="#555">dips to Firestore</text>
+  <text x="800" y="201" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="710" y="220" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="800" y="240" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Log Alert Delivery</text>
+  <text x="800" y="255" font-size="10" text-anchor="middle" fill="#555">Track SMS/email</text>
+  <text x="800" y="268" font-size="10" text-anchor="middle" fill="#555">success/failure</text>
+  <text x="800" y="281" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="710" y="300" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="800" y="320" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Historical Context</text>
+  <text x="800" y="335" font-size="10" text-anchor="middle" fill="#555">Query for 14d low,</text>
+  <text x="800" y="348" font-size="10" text-anchor="middle" fill="#555">last dip date</text>
+  <text x="800" y="361" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <!-- Monitor System Column -->
+  <rect x="930" y="140" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="1020" y="160" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Setup Error Alerts</text>
+  <text x="1020" y="175" font-size="10" text-anchor="middle" fill="#555">Cloud Monitoring on</text>
+  <text x="1020" y="188" font-size="10" text-anchor="middle" fill="#555">function failures</text>
+  <text x="1020" y="201" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="930" y="220" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="1020" y="240" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Structure Logging</text>
+  <text x="1020" y="255" font-size="10" text-anchor="middle" fill="#555">Consistent log format</text>
+  <text x="1020" y="268" font-size="10" text-anchor="middle" fill="#555">for debugging</text>
+  <text x="1020" y="281" font-size="9" text-anchor="middle" fill="#777">0.5 day</text>
+  
+  <rect x="930" y="300" width="180" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+  <text x="1020" y="320" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">End-to-End Test</text>
+  <text x="1020" y="335" font-size="10" text-anchor="middle" fill="#555">Verify full system</text>
+  <text x="1020" y="348" font-size="10" text-anchor="middle" fill="#555">operation</text>
+  <text x="1020" y="361" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <!-- Future Iteration Stories (Orange) -->
+  
+  <rect x="490" y="480" width="180" height="70" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="3"/>
+  <text x="580" y="500" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Alert Cooldown</text>
+  <text x="580" y="515" font-size="10" text-anchor="middle" fill="#555">Limit alert frequency</text>
+  <text x="580" y="528" font-size="10" text-anchor="middle" fill="#555">(iteration 2)</text>
+  <text x="580" y="541" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="270" y="480" width="180" height="70" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="3"/>
+  <text x="360" y="500" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Configurable Params</text>
+  <text x="360" y="515" font-size="10" text-anchor="middle" fill="#555">Externalize threshold,</text>
+  <text x="360" y="528" font-size="10" text-anchor="middle" fill="#555">window size</text>
+  <text x="360" y="541" font-size="9" text-anchor="middle" fill="#777">1 day</text>
+  
+  <rect x="710" y="480" width="180" height="70" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="3"/>
+  <text x="800" y="500" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Analysis Dashboard</text>
+  <text x="800" y="515" font-size="10" text-anchor="middle" fill="#555">View price history,</text>
+  <text x="800" y="528" font-size="10" text-anchor="middle" fill="#555">alert performance</text>
+  <text x="800" y="541" font-size="9" text-anchor="middle" fill="#777">3 days</text>
+  
+  <!-- Post-Pilot Stories (Purple) -->
+  
+  <rect x="270" y="580" width="180" height="70" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="3"/>
+  <text x="360" y="600" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Exchange Integration</text>
+  <text x="360" y="615" font-size="10" text-anchor="middle" fill="#555">Connect to trading</text>
+  <text x="360" y="628" font-size="10" text-anchor="middle" fill="#555">platform</text>
+  <text x="360" y="641" font-size="9" text-anchor="middle" fill="#777">5 days</text>
+  
+  <rect x="490" y="580" width="180" height="70" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="3"/>
+  <text x="580" y="600" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Automated Trading</text>
+  <text x="580" y="615" font-size="10" text-anchor="middle" fill="#555">Execute buys on</text>
+  <text x="580" y="628" font-size="10" text-anchor="middle" fill="#555">detected dips</text>
+  <text x="580" y="641" font-size="9" text-anchor="middle" fill="#777">5 days</text>
+  
+  <rect x="710" y="580" width="180" height="70" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="3"/>
+  <text x="800" y="600" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Portfolio Tracking</text>
+  <text x="800" y="615" font-size="10" text-anchor="middle" fill="#555">Track holdings,</text>
+  <text x="800" y="628" font-size="10" text-anchor="middle" fill="#555">profit/loss</text>
+  <text x="800" y="641" font-size="9" text-anchor="middle" fill="#777">3 days</text>
+  
+  <!-- Walking Skeleton / Release Line -->
+  <line x1="40" y1="470" x2="1120" y2="470" stroke="#e53935" stroke-width="3" stroke-dasharray="10,5"/>
+  <text x="580" y="465" font-size="12" font-weight="bold" text-anchor="middle" fill="#e53935">
+    Release 1: MVP / Walking Skeleton (~3 weeks)
+  </text>
+  
+  <!-- Iteration boundary -->
+  <line x1="40" y1="570" x2="1120" y2="570" stroke="#f57c00" stroke-width="2" stroke-dasharray="10,5"/>
+  <text x="580" y="565" font-size="12" font-weight="bold" text-anchor="middle" fill="#f57c00">
+    Future Iterations (During Pilot)
+  </text>
+  
+  <!-- Post-pilot boundary -->
+  <line x1="40" y1="670" x2="1120" y2="670" stroke="#7b1fa2" stroke-width="2" stroke-dasharray="10,5"/>
+  <text x="580" y="665" font-size="12" font-weight="bold" text-anchor="middle" fill="#7b1fa2">
+    Phase 2: Post-Pilot (Automated Trading)
+  </text>
+  
+  <!-- Summary -->
+  <rect x="50" y="720" width="1100" height="150" fill="#f5f5f5" stroke="#999" stroke-width="1" rx="5"/>
+  <text x="600" y="745" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+    Release Plan Summary
+  </text>
+  
+  <text x="70" y="770" font-size="12" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Release 1 (MVP):</tspan> Complete alert system with dip detection, SMS/email delivery, data logging, and monitoring
+  </text>
+  <text x="70" y="790" font-size="12" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Timeline:</tspan> ~3 weeks development (13.5 days of work) + 3 months pilot
+  </text>
+  <text x="70" y="810" font-size="12" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Success Criteria:</tspan> Reliable daily execution, >99% alert delivery, collect data to compare dip-buying vs. DCA
+  </text>
+  <text x="70" y="830" font-size="12" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Future Work:</tspan> Alert refinements during pilot, then automated trading in Phase 2 (post-pilot decision)
+  </text>
+  <text x="70" y="850" font-size="12" text-anchor="start" fill="#555" font-style="italic">
+    Note: All MVP stories should be "ready for dev" before starting development
+  </text>
+</svg>
