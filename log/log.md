@@ -260,3 +260,49 @@ environment variables are fine for the pilot
 
  I wasn't totally happy with the story map. I've renamed it to story-map-first-attempt.svg I've added a critique in a markdown file. Please read that and tell me your 
    thoughts
+
+
+Has anyone else been an influential thinker on user stories since this?
+
+ ● Some influential voices on user stories and product work since Patton (2014):
+
+   Gojko Adzic - "Impact Mapping" and "Specification by Example" - focuses on connecting stories to business outcomes and using concrete examples as acceptance criteria. Very
+   aligned with your preference for clear definition and testability.
+
+   Teresa Torres - "Continuous Discovery Habits" (2021) - emphasizes opportunity solution trees and connecting stories to user outcomes through ongoing discovery. Less about
+   story format, more about ensuring you're solving the right problems.
+
+   Marty Cagan - "Inspired" / "Empowered" - advocates for outcome-based product teams over feature factories. Questions whether detailed user stories are even necessary if
+   teams focus on problems to solve rather than features to build.
+
+   Kent Beck / Extreme Programming community - "Vertical slicing" techniques that emphasize thin end-to-end functionality over horizontal layers, closely related to steel
+   threads.
+
+   Shape Up (Basecamp/37signals) - Jason Fried and DHH's approach uses "pitches" and "scopes" instead of user stories, focusing on appetite (time budget) rather than
+   estimation.
+
+   #NoEstimates movement - Vasco Duarte and others questioning whether estimation adds value at all, focusing instead on breaking work small and measuring flow.
+
+   Are any of these approaches familiar to you, or influencing your thinking on Bitcoin Sniper?
+
+ > Elaborate on Adzic a little
+
+ ● Gojko Adzic's key contributions:
+
+   Specification by Example (2011): The core idea is using concrete examples to specify requirements, rather than abstract descriptions. These examples become both
+   documentation and automated tests. Very much aligns with BDD's Given/When/Then format and your emphasis on testable stories with clear definition.
+
+   Impact Mapping (2012): A strategic planning technique that connects features to business goals. The hierarchy is: Goal → Actor → Impact → Deliverable. Forces you to ask
+   "why are we building this?" before "what should we build?" Helps avoid building features that don't serve the actual objective.
+
+   Three Amigos: Adzic popularized the practice of business/dev/test collaborating on examples before implementation. This addresses your point about "negotiable" gone wrong -
+   conversation happens at the right time with the right people, producing clear specifications.
+
+   Example Mapping: A workshop technique using colored cards to identify rules, examples, and questions. Helps teams discover edge cases and gaps before coding.
+
+   For Bitcoin Sniper, this might look like:
+
+     - Impact Map: Goal (validate dip-buying hypothesis) → Actor (you) → Impact (act on opportunities quickly) → Deliverable (SMS alerts)
+     - Examples: "When price is $89k and 14d mean is $94k (σ=$4k), then z-score is -1.25, then send alert"
+
+   Does this specification-by-example approach fit your "ready for dev" definition?

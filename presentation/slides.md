@@ -379,10 +379,56 @@ Which INVEST criteria do you question in 2025?
 </div>
 
 <div class="myprompt">
-&gt; I think it's sometimes inevitable that stories depend on each other. You can't build software in literally any order. His emphasis on estimation reflected an era when agile was dominated by scrum - that's also why he talks about sprints. This thinking predated modern ci/cd. And I've had bad experiences with teams taking the idea of 'negotiable' to extremes and trying to kick off stories with no analysis done at all. This is especially messy in a world of distibuted working. Srories need to have clear definition. However, I strongly agree with valuable, small and testable.
+&gt; I think it's sometimes inevitable that stories depend on each other. You can't build software in literally any order. His emphasis on estimation reflected an era when agile was dominated by scrum - that's also why he talks about sprints. This thinking predated modern ci/cd. And I've had bad experiences with teams taking the idea of 'negotiable' to extremes and trying to kick off stories with no analysis done at all. This is especially messy in a world of distibuted working. Stories need to have clear definition. However, I strongly agree with valuable, small and testable.
 </div>
 
+--
 
+<div class="myprompt">
+&gt;What story splitting techniques does Cohn talk about?
+</div>
 
+<div class="copilot-response">
+Cohn's story splitting patterns include:
 
+    - By workflow steps: Split a complex process into individual steps (e.g., "register account" → "enter details", "verify email", "set password")
+
+    - By business rule variations: Different rules/conditions as separate stories (e.g., "calculate shipping" → "domestic shipping", "international shipping", "expedited shipping")
+
+    - By data entry methods: Different ways to accomplish the same goal (e.g., "import contacts" → "manual entry", "CSV upload", "sync from Gmail")
+
+    - By data variations: Different types of data (e.g., "support payment methods", "credit card", "PayPal", "bank transfer")
+
+    - By operations (CRUD): Create, Read, Update, Delete as separate stories
+
+    - By acceptance criteria: When multiple acceptance criteria exist, each could become its own story
+
+    - By performance/quality attributes: Start with basic functionality, then add performance/security/usability stories
+
+    - By simple/complex: Implement simple version first, complex cases later (e.g., "search products" → "exact match" then "fuzzy search")
+
+    - Spike/implementation split: Research spike first, then implementation story
+</div>
+
+-- 
+
+<div class="myprompt">
+&gt;How do Cohn's guidelines on sizing and spliting stories compare to those in Jeff Patton's book 'User Story Mapping'?
+</div>
+
+<div class="copilot-response">
+I'm familiar with Jeff Patton's "User Story Mapping" (2014), which came a decade after Cohn and reflects evolved thinking. Key differences:
+
+    - Patton on splitting: Emphasizes horizontal slicing - cutting through the full stack to deliver thin end-to-end functionality. This is the "walking skeleton" / "steel thread" approach. Cohn's patterns are more tactical; Patton's is more strategic about delivering complete user value early.
+
+    - Patton's "release strategy": Uses the story map to define MVPs by drawing horizontal lines - "everything above this line is Release 1". Less about individual story size, more about what collection of stories delivers a coherent release.
+
+    - Patton on sizing: Stories should be sized for learning, not just estimation. Build the smallest thing that lets you validate assumptions. This aligns with modern continuous delivery better than Scrum sprint sizing
+     
+    - Opening the box: Patton talks about "opening the box" on a story - breaking it down only when you're ready to work on it, not upfront. This is more compatible with distributed teams needing clarity - detail comes at the right time.
+     
+    - Narrative flow: Patton emphasizes the story map should tell the user's journey left-to-right. This is what I tried with attempt 2.
+     
+    - Does Patton's approach resonate more with how you work?
+</div>
 

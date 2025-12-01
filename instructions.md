@@ -35,3 +35,9 @@ gh issue create --label story --label backlog --title "Test story" --body "Body 
 
 I have created labels to represent the workflow of our stories - "backlog" when the story is just a title or placeholder. "ready for dev" when it is fleshed out and ready to go. "in development" when  it is being worked on.
 
+### Tips for writing good user stories
+
+A good user story should have the following attributes:
+
+* It should 
+
