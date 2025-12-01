@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <!-- Title -->
+  <text x="700" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Bitcoin Sniper - Story Map (Alert Pilot Phase)
+  </text>
+  
+  <!-- Legend -->
+  <rect x="1150" y="50" width="200" height="120" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="1250" y="70" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Legend</text>
+  <rect x="1160" y="80" width="80" height="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="1260" y="97" font-size="11" text-anchor="start" fill="#333">Steel Thread</text>
+  <rect x="1160" y="110" width="80" height="25" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+  <text x="1260" y="127" font-size="11" text-anchor="start" fill="#333">Release 1</text>
+  <rect x="1160" y="140" width="80" height="25" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="1260" y="157" font-size="11" text-anchor="start" fill="#333">Future iteration</text>
+  
+  <!-- Iteration 0 Callout -->
+  <rect x="50" y="60" width="1100" height="60" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"/>
+  <text x="70" y="85" font-size="14" font-weight="bold" fill="#c62828">
+    Iteration 0: Infrastructure Setup
+  </text>
+  <text x="70" y="105" font-size="11" fill="#555">
+    Create GCP project, enable APIs, setup Firestore, configure Twilio/SendGrid accounts, create deployment pipeline, configure Cloud Scheduler
+  </text>
+  
+  <!-- User Activities (Top Row - Steel Thread) -->
+  <rect x="50" y="150" width="200" height="50" fill="#1976d2" rx="5"/>
+  <text x="150" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Collect Price Data
+  </text>
+  
+  <rect x="270" y="150" width="200" height="50" fill="#1976d2" rx="5"/>
+  <text x="370" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Identify Dips
+  </text>
+  
+  <rect x="490" y="150" width="200" height="50" fill="#1976d2" rx="5"/>
+  <text x="590" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Receive Alerts
+  </text>
+  
+  <rect x="710" y="150" width="200" height="50" fill="#1976d2" rx="5"/>
+  <text x="810" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Review Performance
+  </text>
+  
+  <rect x="930" y="150" width="200" height="50" fill="#1976d2" rx="5"/>
+  <text x="1030" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    Maintain Reliability
+  </text>
+  
+  <!-- Steel Thread Stories (Blue) - Minimal vertical slice -->
+  
+  <!-- Collect Price Data Column -->
+  <rect x="50" y="230" width="200" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="150" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Fetch Daily Bitcoin</text>
+  <text x="150" y="270" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Price</text>
+  <text x="150" y="290" font-size="10" text-anchor="middle" fill="#555">GIVEN the system runs daily</text>
+  <text x="150" y="302" font-size="10" text-anchor="middle" fill="#555">WHEN it's 08:30 London time</text>
+  
+  <!-- Identify Dips Column -->
+  <rect x="270" y="230" width="200" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="370" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Detect Significant</text>
+  <text x="370" y="270" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Price Dip</text>
+  <text x="370" y="290" font-size="10" text-anchor="middle" fill="#555">GIVEN 14 days of prices</text>
+  <text x="370" y="302" font-size="10" text-anchor="middle" fill="#555">WHEN price drops >1σ</text>
+  
+  <!-- Receive Alerts Column -->
+  <rect x="490" y="230" width="200" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="590" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Receive SMS Alert</text>
+  <text x="590" y="270" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">With Price Info</text>
+  <text x="590" y="290" font-size="10" text-anchor="middle" fill="#555">GIVEN a dip is detected</text>
+  <text x="590" y="302" font-size="10" text-anchor="middle" fill="#555">WHEN alert sent via SMS</text>
+  
+  <!-- Review Performance Column -->
+  <rect x="710" y="230" width="200" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="810" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">View Price History</text>
+  <text x="810" y="270" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">and Dip Events</text>
+  <text x="810" y="290" font-size="10" text-anchor="middle" fill="#555">GIVEN pilot is running</text>
+  <text x="810" y="302" font-size="10" text-anchor="middle" fill="#555">WHEN I query logs</text>
+  
+  <!-- Maintain Reliability Column -->
+  <rect x="930" y="230" width="200" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="1030" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Get Notified of</text>
+  <text x="1030" y="270" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">System Failures</text>
+  <text x="1030" y="290" font-size="10" text-anchor="middle" fill="#555">GIVEN system fails</text>
+  <text x="1030" y="302" font-size="10" text-anchor="middle" fill="#555">WHEN error occurs</text>
+  
+  <!-- Steel Thread Line -->
+  <line x1="40" y1="220" x2="1140" y2="220" stroke="#1976d2" stroke-width="3"/>
+  <text x="590" y="215" font-size="12" font-weight="bold" text-anchor="middle" fill="#1976d2">
+    STEEL THREAD (Minimal Viable Product)
+  </text>
+  
+  <!-- Release 1 Stories (Green) - Enhancements to steel thread -->
+  
+  <!-- Collect Price Data enhancements -->
+  <rect x="50" y="330" width="200" height="70" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="150" y="350" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Store Complete</text>
+  <text x="150" y="365" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Price History</text>
+  <text x="150" y="383" font-size="9" text-anchor="middle" fill="#555">GIVEN daily price fetched</text>
+  <text x="150" y="393" font-size="9" text-anchor="middle" fill="#555">THEN store in Firestore</text>
+  
+  <!-- Identify Dips enhancements -->
+  <rect x="270" y="330" width="200" height="70" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="370" y="350" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Calculate Historical</text>
+  <text x="370" y="365" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Context</text>
+  <text x="370" y="383" font-size="9" text-anchor="middle" fill="#555">GIVEN 14 days of data</text>
+  <text x="370" y="393" font-size="9" text-anchor="middle" fill="#555">THEN show 14d low, last dip</text>
+  
+  <!-- Receive Alerts enhancements -->
+  <rect x="490" y="330" width="200" height="70" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="590" y="350" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Receive Email if</text>
+  <text x="590" y="365" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">SMS Fails</text>
+  <text x="590" y="383" font-size="9" text-anchor="middle" fill="#555">GIVEN SMS delivery fails</text>
+  <text x="590" y="393" font-size="9" text-anchor="middle" fill="#555">THEN email alert sent</text>
+  
+  <!-- Review Performance enhancements -->
+  <rect x="710" y="330" width="200" height="70" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="810" y="350" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">View Alert Delivery</text>
+  <text x="810" y="365" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Status</text>
+  <text x="810" y="383" font-size="9" text-anchor="middle" fill="#555">GIVEN alerts sent</text>
+  <text x="810" y="393" font-size="9" text-anchor="middle" fill="#555">THEN see success/failure log</text>
+  
+  <!-- Maintain Reliability enhancements -->
+  <rect x="930" y="330" width="200" height="70" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="1030" y="350" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Recover from API</text>
+  <text x="1030" y="365" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Failures</text>
+  <text x="1030" y="383" font-size="9" text-anchor="middle" fill="#555">GIVEN Coinbase API down</text>
+  <text x="1030" y="393" font-size="9" text-anchor="middle" fill="#555">THEN retry with backoff</text>
+  
+  <!-- Release 1 Line -->
+  <line x1="40" y1="420" x2="1140" y2="420" stroke="#388e3c" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="590" y="415" font-size="11" font-weight="bold" text-anchor="middle" fill="#388e3c">
+    Release 1: Complete Alert System
+  </text>
+  
+  <!-- Future Iteration Stories (Orange) -->
+  
+  <rect x="270" y="440" width="200" height="70" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="3"/>
+  <text x="370" y="460" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Adjust Detection</text>
+  <text x="370" y="475" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Threshold</text>
+  <text x="370" y="493" font-size="9" text-anchor="middle" fill="#555">GIVEN threshold too sensitive</text>
+  <text x="370" y="503" font-size="9" text-anchor="middle" fill="#555">THEN configure via config file</text>
+  
+  <rect x="490" y="440" width="200" height="70" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="3"/>
+  <text x="590" y="460" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Limit Alert</text>
+  <text x="590" y="475" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Frequency</text>
+  <text x="590" y="493" font-size="9" text-anchor="middle" fill="#555">GIVEN too many alerts</text>
+  <text x="590" y="503" font-size="9" text-anchor="middle" fill="#555">THEN max 1 per week</text>
+  
+  <rect x="710" y="440" width="200" height="70" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="3"/>
+  <text x="810" y="460" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Compare to DCA</text>
+  <text x="810" y="475" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Baseline</text>
+  <text x="810" y="493" font-size="9" text-anchor="middle" fill="#555">GIVEN pilot complete</text>
+  <text x="810" y="503" font-size="9" text-anchor="middle" fill="#555">THEN calculate vs DCA profit</text>
+  
+  <!-- Future Iteration Line -->
+  <line x1="40" y1="530" x2="1140" y2="530" stroke="#f57c00" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="590" y="525" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57c00">
+    Iteration 2+: Refinements During Pilot
+  </text>
+  
+  <!-- Summary Box -->
+  <rect x="50" y="580" width="1100" height="180" fill="#f5f5f5" stroke="#999" stroke-width="1" rx="5"/>
+  <text x="600" y="605" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+    Release Strategy
+  </text>
+  
+  <text x="70" y="630" font-size="11" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Iteration 0:</tspan> Setup infrastructure, deployment pipeline, and external service accounts (not user stories - just tasks)
+  </text>
+  
+  <text x="70" y="655" font-size="11" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Steel Thread:</tspan> Minimal end-to-end slice (blue) - fetch price → detect dip → send SMS → log data → alert on errors
+  </text>
+  <text x="90" y="670" font-size="10" text-anchor="start" fill="#555">
+    This is the walking skeleton. Deploy and verify it works end-to-end before adding enhancements.
+  </text>
+  
+  <text x="70" y="690" font-size="11" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Release 1:</tspan> Steel thread + enhancements (green) - complete price history, historical context, email fallback, better error handling
+  </text>
+  <text x="90" y="705" font-size="10" text-anchor="start" fill="#555">
+    This is the complete MVP ready for 3-month pilot. All REQ-01 through REQ-15 from PRD satisfied.
+  </text>
+  
+  <text x="70" y="725" font-size="11" text-anchor="start" fill="#333">
+    <tspan font-weight="bold">Iteration 2+:</tspan> Refinements based on pilot learnings (orange) - tunable parameters, alert frequency limits, performance analysis
+  </text>
+  <text x="90" y="740" font-size="10" text-anchor="start" fill="#555">
+    Build these as needed during the pilot period based on actual usage patterns and feedback.
+  </text>
+</svg>

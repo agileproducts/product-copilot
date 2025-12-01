@@ -256,3 +256,7 @@ environment variables are fine for the pilot
    you like to stick with Python for consistency, or do you have another preference?
 
  > Python is fine for this I think
+
+
+ I wasn't totally happy with the story map. I've renamed it to story-map-first-attempt.svg I've added a critique in a markdown file. Please read that and tell me your 
+   thoughts

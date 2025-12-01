@@ -273,3 +273,116 @@ Yes - if there's no legitimate dip, you won't get an alert anyway, so silence co
 ---
 
 !["story map first attempt"](story-map-first-attempt.svg)
+
+---
+
+<div class="myprompt">
+&gt;  I wasn't totally happy with the story map. I've renamed it to story-map-first-attempt.svg I've added a critique in a markdown file. Please read that and tell me your thoughts
+</div>
+
+--
+
+<div class="doc">
+# Critique of the first attempt at a story map
+
+This is a decent attempt at a story map. But there are some things I think we should change.
+
+1. Configuring GCP or deploying a cloud function are tasks, not stories. These are things we would do as part of stories to deliver real working software. So I don't think they belong on a story map.
+2. I like story maps in which you would move along the top row to deliver a steel thread. But in this map you would have to work down some of the columns first.
+3. You have a column about tracking/storing data which comes after sending an alert, this is the wrong way around isn't it?
+4. You have a story to 'structure logging'. This is a task. What story would you do involving logging that did not involve structuring it?
+5.  End-to-end test is not a story. Remember we are doing TDD and CI/CD. Our software is *always* tested end to end as part of our deployment pipeline.
+6. Now I think of it, setting up a deployment pipeline is the kind of thing that can absorb a lot of time in a story that I'd prefer to have visibility of. Maybe we should identify this as a kind of iteration 0 prerequisite. 
+7. You don't need to add time estimates to these stories. You aren't the coder, yet. 
+</div>
+
+--
+<div class="copilot-response">
+Excellent critique! You're absolutely right on all points. Let me address each:
+
+    - GCP config, deployment = tasks not stories - Agreed. These are implementation details within stories, not user-facing value.
+    - Steel thread should flow horizontally - Yes! The top row should be the user journey you can walk through left-to-right for the first working slice.
+    - Data storage before alerts - Correct! You need to store data before you can detect patterns and alert. My ordering was backwards.
+    - "Structure logging" is a task - Right. Logging is a quality aspect of every story, not a separate deliverable.
+    - End-to-end test isn't a story - Absolutely. With TDD/CI/CD, this is continuous practice, not a phase.
+    - Deployment pipeline = iteration 0 - Smart. Getting the infrastructure and pipeline set up is essential scaffolding before story work begins.
+    - No time estimates needed - Fair point. These are sizing conversations for the dev team, not product decisions.
+
+Should I create a revised story map focused on:
+
+    - User-facing value (stories not tasks)
+    - Horizontal steel thread flow
+    - Proper sequencing (store → analyze → alert)
+    - Iteration 0 for infrastructure setup?
+</div>
+
+---
+
+<div class="myprompt">
+&gt; ok have another go. Call this story-map-attempt-2
+</div>
+
+<div class="copilot-response">
+Done! I've created a revised story map (story-map-attempt-2.svg) that addresses your critique
+</div>
+
+---
+
+!["story map first attempt"](story-map-attempt-2.svg)
+
+---
+
+<div class="myprompt">
+&gt; Are you familiar with Mike Cohn's book 'user stories applied'?
+</div>
+
+<div class="copilot-response">
+Yes, I'm familiar with Mike Cohn's "User Stories Applied: For Agile Software Development" (2004). It's a foundational text on writing effective user stories.
+
+   Key concepts from the book include:
+
+     - User story format: "As a [role], I want [goal] so that [benefit]"
+     - INVEST criteria: Independent, Negotiable, Valuable, Estimable, Small, Testable
+     - Three Cs: Card (brief description), Conversation (discussion details), Confirmation (acceptance criteria)
+     - Story splitting techniques - breaking down large stories
+     - Personas and user roles
+     - Epics and themes for organizing stories
+</div>
+
+--
+
+<div class="myprompt">
+&gt; Expand on Cohn's INVEST criteria.
+</div>
+
+<div class="copilot-response">
+INVEST Criteria for User Stories (Mike Cohn):
+
+    - Independent: Stories should be loosely coupled, allowing them to be developed in any order without creating dependencies. This gives the product owner flexibility in prioritization. If two stories are tightly dependent, consider combining them or finding a way to decouple.
+    - Negotiable: A story is not a contract. It's a placeholder for a conversation between the development team and product owner. Details are worked out during planning and development, not written in stone upfront. Stories should leave room for discussion about implementation.
+    - Valuable: Every story must deliver value to the user (or customer/stakeholder). Avoid technical tasks masquerading as stories. "Refactor database schema" isn't valuable to users; "Process orders 50% faster" is
+    - Estimable: The team must be able to estimate the story's size/effort. If they can't estimate, it's usually because the story is too vague, too large, or the team lacks necessary knowledge. These issues need resolving before development.
+    - Small: Stories should be sized to fit within a single iteration/sprint. Large stories (epics) need splitting. "Small" is relative to your team's sprint length, but typically means a few days of work, not weeks.
+    - Testable: You must be able to write tests to verify the story is complete. If you can't define success criteria, the story is too vague. This drives clear acceptance criteria (which is where Given/When/Then fits nicely).
+
+   Does this align with how you're thinking about the Bitcoin Sniper stories?
+</div>
+
+--
+
+<div class="myprompt">
+&gt; I don't necessarily agree with them all in 2025.
+</div>
+
+<div class="copilot-response">
+Which INVEST criteria do you question in 2025?
+</div>
+
+<div class="myprompt">
+&gt; I think it's sometimes inevitable that stories depend on each other. You can't build software in literally any order. His emphasis on estimation reflected an era when agile was dominated by scrum - that's also why he talks about sprints. This thinking predated modern ci/cd. And I've had bad experiences with teams taking the idea of 'negotiable' to extremes and trying to kick off stories with no analysis done at all. This is especially messy in a world of distibuted working. Srories need to have clear definition. However, I strongly agree with valuable, small and testable.
+</div>
+
+
+
+
+
