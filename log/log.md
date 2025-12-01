@@ -306,3 +306,43 @@ Has anyone else been an influential thinker on user stories since this?
      - Examples: "When price is $89k and 14d mean is $94k (σ=$4k), then z-score is -1.25, then send alert"
 
    Does this specification-by-example approach fit your "ready for dev" definition?
+
+    think we need to write ourselves some guidelines on how to identify user stories. These should be based on the best of Cohn and Patton - the classic ideas are still 
+   right. I see example mapping more as a technique for driving stories out than a way of writing them down. I'm not a fan of giving teams vague problems and expecting them to
+    freestyle, I don't think many people can really do that. Try drafing some guidelines in a doc.
+
+ ✔ Create docs/user-story-guidelines.md (+201)
+
+ ● Done! I've created comprehensive user story guidelines in /docs/user-story-guidelines.md that:
+
+     - Focus on the essential three qualities: Valuable, Small, Testable
+     - Emphasize clarity and definition (not vague "problems to solve")
+     - Use Given/When/Then format for acceptance criteria
+     - Explain how to use story mapping to identify stories (steel thread first, then depth)
+     - Include practical splitting techniques from Cohn/Patton
+     - Clearly distinguish stories from tasks
+     - Define your "ready for dev" workflow
+     - Provide good and bad examples
+
+   The guidelines are pragmatic about dependencies, CI/CD, and distributed teams while keeping the best of Cohn and Patton's classic thinking.
+
+ > Have a third attempt at your story map, in the light of these guidelines.
+
+ Have a third attempt at your story map, in the light of these guidelines.
+
+ ✔ Create docs/story-map.svg (+384)
+
+ ● Done! I've created the final story map (story-map.svg) applying the guidelines:
+
+   Key improvements:
+
+     - User-focused activities: "Observe Bitcoin Prices" not "Collect Price Data" - written from user's perspective
+     - Clear user value in every story: Each title describes what the user can do, not technical implementation
+     - Complete Given/When/Then: All stories have testable acceptance criteria visible on the map
+     - Horizontal flow: Steel thread reads left-to-right as a complete user journey
+     - Proper sequencing: Dependencies flow naturally left-to-right
+     - Clear visual hierarchy: Steel thread (blue/thick), Release 1 (green/solid), Future (orange/dashed)
+     - Reading guide: Bottom section explains how to interpret and use the map
+
+   The steel thread is truly minimal - just enough to prove the system works end-to-end. Release 1 adds robustness. Future iterations acknowledge we'll learn from the pilot
+   before building more.
