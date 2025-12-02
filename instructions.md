@@ -19,7 +19,7 @@ source .venv/bin/activate
 
 ## User stories
 
-User stories should be written using the BDD _Given, Then, When_ format. 
+User stories should start with the _As.. I want.. So that_ format. Acceptance criteria should be written using the BDD _Given, Then, When_ format. 
 
 Our engineering will practise TDD, so we should never see separate stories to 'write tests'.
 
@@ -37,7 +37,6 @@ I have created labels to represent the workflow of our stories - "backlog" when 
 
 ### Tips for writing good user stories
 
-A good user story should have the following attributes:
+See [writing good user stories](writing-good-user-stories.md).
 
-* It should 
 
