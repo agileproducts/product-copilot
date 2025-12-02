@@ -432,3 +432,52 @@ I'm familiar with Jeff Patton's "User Story Mapping" (2014), which came a decade
     - Does Patton's approach resonate more with how you work?
 </div>
 
+--
+
+<div class="myprompt">
+&gt;Has anyone else been an influential thinker on user stories since this?
+</div>
+
+<div class="copilot-response">
+
+ ● Some influential voices on user stories and product work since Patton (2014):
+
+   Gojko Adzic - "Impact Mapping" and "Specification by Example" - focuses on connecting stories to business outcomes and using concrete examples as acceptance criteria. Very
+   aligned with your preference for clear definition and testability.
+
+   Teresa Torres - "Continuous Discovery Habits" (2021) - emphasizes opportunity solution trees and connecting stories to user outcomes through ongoing discovery. Less about
+   story format, more about ensuring you're solving the right problems.
+
+   Marty Cagan - "Inspired" / "Empowered" - advocates for outcome-based product teams over feature factories. Questions whether detailed user stories are even necessary if
+   teams focus on problems to solve rather than features to build.
+
+   Kent Beck / Extreme Programming community - "Vertical slicing" techniques that emphasize thin end-to-end functionality over horizontal layers, closely related to steel
+   threads.
+
+   Shape Up (Basecamp/37signals) - Jason Fried and DHH's approach uses "pitches" and "scopes" instead of user stories, focusing on appetite (time budget) rather than
+   estimation.
+
+   #NoEstimates movement - Vasco Duarte and others questioning whether estimation adds value at all, focusing instead on breaking work small and measuring flow.
+
+   Are any of these approaches familiar to you, or influencing your thinking on Bitcoin Sniper?
+</div>
+
+--
+
+<div class="myprompt">
+&gt;I think we need to write ourselves some guidelines on how to identify user stories. These should be based on the best of Cohn and Patton - the classic ideas are still right. I see example mapping more as a technique for driving stories out than a way of writing them down. I'm not a fan of giving teams vague problems and expecting them to freestyle, I don't think many people can really do that. Try drafing some guidelines in a doc.
+</div>
+
+<div class="copilot-response">
+ ✔ Create docs/user-story-guidelines.md (+201)
+</div>
+
+---
+
+<div class="myprompt">
+&gt;Have a third attempt at your story map, in the light of these guidelines.
+</div>
+
+---
+
+!["story map first attempt"](story-map.svg)

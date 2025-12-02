@@ -346,3 +346,473 @@ Has anyone else been an influential thinker on user stories since this?
 
    The steel thread is truly minimal - just enough to prove the system works end-to-end. Release 1 adds robustness. Future iterations acknowledge we'll learn from the pilot
    before building more.
+
+   Ready to start creating the steel thread stories as
+   GitHub issues?
+
+
+ Ok let's start by trying to add the first story 
+
+  How would you showcase or demo that this story is done?
+
+ ● Good question. For "Fetch daily Bitcoin price", I'd demonstrate:
+
+   Live demo:
+
+     - Trigger the Cloud Function manually (via GCP Console or gcloud CLI)
+     - Show it executing successfully (function logs showing "fetching price...")
+     - Query Firestore to show the new price record with today's timestamp
+     - Show the logged output with the actual price fetched
+
+   Alternatively, if the scheduled run already happened:
+
+     - Open Firestore console and show the bitcoin_prices collection
+     - Point to today's entry with timestamp ~08:30
+     - Show Cloud Function execution logs from this morning confirming it ran
+
+   The key is: there's a new price record in Firestore that wasn't there before, with today's date.
+
+   But this highlights a potential issue with the story - it's mixing two concerns:
+
+     - Fetching the price (the API call)
+     - Storing it (persistence)
+
+   Should we split this? Or is it small enough that fetching without storing has no user value, so they belong together in the steel thread?
+
+    If I were an engineer building this I'd definitely get 'fetch' working first, them 'store' and finally 'schedule'. Without store, it's very difficult to prove 'schedule'
+   is working. But there is a risk here of breaking the story into technical tasks that don't deliver demoable value, right? 
+
+    Exactly - you've hit the classic tension. As an engineer, the natural build order is:
+
+     - Fetch - call API, log response to console
+     - Store - persist to Firestore  
+     - Schedule - Cloud Scheduler triggers it daily
+
+   But only at step 3 do you have something truly demoable to a stakeholder who cares about the business value, not the technical implementation.
+
+   Options:
+
+   A) Keep story as-is - "Fetch daily Bitcoin price" includes all three technical steps. It's small (maybe 1-2 days), delivers complete value. Demo shows: "it ran this morning
+   at 08:30 and stored the price."
+
+   B) Split into two stories:
+
+     - "Fetch and store Bitcoin price" (manually triggered for now)
+     - "Schedule daily price fetch" (add the scheduler)
+
+   First story is demoable: "I can manually trigger it and see the price in Firestore." Second adds automation.
+
+   C) Accept the steel thread story is slightly larger - it's the minimum viable slice, so it includes all the plumbing even if that's a few days of work.
+
+   I lean toward A - keep it together. The story is still small, and splitting creates a first story that's only half-useful. What's your instinct?
+
+    Well what I'd do here is ask how much work things are - I don't want stories that are too big. But since you are estimating 1-2 days for the complete story, lets go with
+   option A. Do you need to update the issue? 
+
+   Pretend you are a QA, What do you think you're going to ask about this story?
+
+ ● As a QA, I'd ask:
+
+   Error scenarios:
+
+     - What happens if Coinbase API is down or returns an error? Do we retry? Log and continue? Alert someone?
+     - What if the API returns invalid data (null, negative number, malformed JSON)?
+     - What if Firestore write fails?
+
+   Duplicate handling:
+
+     - If the function runs twice in the same day (manual trigger + scheduled), do we store both? Overwrite? Prevent duplicates?
+
+   Data validation:
+
+     - What's a "reasonable" price range? Should we reject obviously wrong values (e.g., $1 or $10 million)?
+     - Do we validate the timestamp format?
+
+   Observability:
+
+     - How do I verify it ran successfully without checking Firestore directly?
+     - What gets logged? Just "success" or the actual price fetched?
+
+   Timezone edge cases:
+
+     - "08:30 London time" - what about DST transitions? (Though you said Cloud Scheduler handles this)
+     - What if it runs late (08:45)? Still valid?
+
+   Acceptance criteria gaps:
+
+     - "fetched from Coinbase API" - what's the specific response structure we expect?
+     - "stored in Firestore" - what's the exact document structure (fields, types)?
+
+   Most critical: error handling isn't specified. That's probably covered in a later Release 1 story ("Recover from API failures"), but should this story fail gracefully or
+   just crash?
+
+   It should certainly not just crash. We have put alerting the user that the system is broken into a separate story, but this story should at least handle failure scenarios.
+
+   You're right - this story needs to handle failures gracefully even if user alerting comes later. Let me update the issue to add error handling acceptance criteria.
+
+ ✔ View current issue content
+    $ cd /Users/stephencornelius/Projects/product-copilot && gh issue view 2
+    └ 41 lines...
+
+ ✔ Update issue with error handling scenarios
+    $ cd /Users/stephencornelius/Projects/product-copilot && gh issue edit 2 --body "## Description
+
+    As an investor, I want the system to fetch the current Bitcoin price daily, so that I have fresh data to identify buying opportunities.
+
+    ## Acceptance Criteria...
+    └ 51 lines...
+
+ ● Done! Updated issue #2 to include:
+
+   Two new error scenarios:
+
+     - API failure: logs error, doesn't crash, doesn't store bad data
+     - Invalid response: rejects malformed data, logs error, doesn't crash
+
+   Additional clarifications:
+
+     - Price validation range ($1k - $1M)
+     - Firestore document structure
+     - What should be logged (timestamp, success/failure, price/error details)
+     - Explicit note that user alerting is a separate story
+
+   The story now covers graceful failure handling - the function won't crash, but it won't necessarily alert the user (that's the "Know when system fails" story). This makes it
+   properly complete and testable.
+
+    Ok let's try adding the next story.
+
+ ✔ Create second steel thread story
+    $ cd /Users/stephencornelius/Projects/product-copilot && gh issue create --label story --label backlog --title "Detect significant price dip" --body "## Description
+
+    As an investor, I want the system to detect when Bitcoin price has dropped significantly below recent averages, so that I can be alerted to potential buying 
+    opportunities....
+    └ 53 lines...
+
+ ● Created issue #3: "Detect significant price dip"
+
+   This story covers:
+
+     - Happy path: Detects dip when z-score < -1.0
+     - No dip scenario: Normal prices don't trigger detection
+     - Insufficient data: Handles the first 13 days gracefully
+     - Error handling: Firestore query failures don't crash
+
+   The story makes it clear:
+
+     - The detection algorithm (z-score calculation)
+     - What gets logged (dip events with all the stats)
+     - Dependencies on the first story
+     - The 14-day waiting period before full operation
+
+   How would you demo this one? You'd need to either wait 14 days for real data, or seed Firestore with historical data to show it detecting a dip.
+
+   Ok let's try adding the next story. Pretend you are our lead engineer. Tell me why we are struggling to demo this?
+
+ ● As the lead engineer, here's my concern:
+
+   We can't demo this story in isolation because:
+
+     - No visible output - The story says "log the dip event" but logging to Firestore isn't something a stakeholder can easily see. There's no UI, no alert, nothing 
+   user-facing.
+     - Demo requires manual inspection - To prove it works, I'd have to:
+       - Open GCP Console
+       - Navigate to Firestore
+       - Query the dip_events collection
+       - Show them a database record
+
+   That's a technical demonstration, not a business value demonstration.
+
+   The real user value comes in the next story - "Receive SMS with price info". That's when the user actually experiences something. They get an SMS on their phone. That's
+   demoable.
+
+   So we have a choice:
+
+     - Keep stories as-is - accept that story #2 is only demoable to technical stakeholders via Firestore inspection
+     - Combine stories #2 and #3 - "Detect dip and send SMS alert" becomes one story. It's bigger (maybe 2-3 days), but it delivers real user value you can demo by showing an 
+   SMS on your phone.
+
+   The steel thread is supposed to be the minimal demoable slice. Right now, stories #2 and #3 together form that slice. Story #2 alone is infrastructure without user impact.
+
+   What do you think - combine them?
+
+   No I think you are off track. Fetching the price, storing it, doing the stats, sending an SMS message where required - that would be a HUGE story. It's practically 'build
+   the application'. Think about this second story a bit harder. We were ok with showcasing data logged to our store for the first story, bearing in mind that in this case
+   our product has no web UI. But we're struggling to work out how to demo our alerting story. 
+
+   Ah, you're right - I was conflating two different issues. Let me think this through properly.
+
+   Story #1 (Fetch daily Bitcoin price): Easy to demo - open Firestore, show today's price record. Done.
+
+   Story #2 (Detect significant price dip): Also easy to demo in principle - show a dip event record in Firestore. BUT...
+
+   The problem is: how do we trigger a dip for the demo?
+
+   We can't just run the function and hope there's a real dip today. We need to either:
+
+     - Seed Firestore with 14 days of synthetic data where day 15 is a dip
+     - Temporarily adjust the threshold to make today's price count as a dip
+     - Have a way to manually trigger detection with test data
+
+   Without this, we're blocked on demonstrating story #2 - not because it doesn't have value, but because we can't reliably create the conditions for a dip during a demo.
+
+   Story #3 (Receive SMS alert) has the same problem - we need a dip to occur to trigger the SMS. We can't demo the alert without being able to manufacture a dip condition.
+
+   Solution: We need testability built in - either:
+
+     - A test/demo mode that uses synthetic data
+     - Ability to manually trigger with injected data
+     - Lower the threshold temporarily for demo purposes
+
+   Is this the issue you're highlighting?
+
+   Yes now I think you are getting it. What would I typically do to demonstrate any product? I can't usually do it by waiting for real customers on live can I?
+
+ ● Right! You'd use test data or a demo/test environment.
+
+   For any product demo, you'd typically:
+
+     - Use a test/staging environment with synthetic data
+     - Have sample customers/accounts set up
+     - Seed the system with known scenarios that showcase the features
+
+   For our stories, we need the same approach:
+
+   Story #2 (Detect dip): 
+
+     - Seed Firestore with 14 days of test price data (e.g., prices around $95k)
+     - Add today's test price as $89k (a clear dip)
+     - Run the function
+     - Show the dip event appears in Firestore
+
+   Story #3 (Send SMS alert):
+
+     - Use the same test data setup
+     - Run the function
+     - Show the SMS arrives on your phone
+
+   This means we probably need to add acceptance criteria or notes about testability:
+
+     - Function should be triggerable manually (not just by scheduler)
+     - Should work with existing Firestore data (doesn't care if it's "real" or "test" data)
+     - Or: have a test mode that uses a separate collection/environment
+
+   Without this, we can't properly test OR demo these stories. Should we update the stories to explicitly address testability?
+
+   Yes
+
+    Update story #2 with testability criteria
+    $ cd /Users/stephencornelius/Projects/product-copilot && gh issue edit 2 --body "## Description
+
+    As an investor, I want the system to fetch the current Bitcoin price daily, so that I have fresh data to identify buying opportunities.
+
+    ## Acceptance Criteria...
+    └ 66 lines...
+
+ ✔ Update story #3 with testability and demo instructions
+    $ cd /Users/stephencornelius/Projects/product-copilot && gh issue edit 3 --body "## Description
+
+    As an investor, I want the system to detect when Bitcoin price has dropped significantly below recent averages, so that I can be alerted to potential buying 
+    opportunities....
+    └ 67 lines...
+
+ ● Done! Updated both stories with testability:
+
+   Story #2 (Fetch daily Bitcoin price):
+
+     - Added acceptance criteria for manual triggering
+     - Added demo instructions: manually trigger, check logs, verify Firestore
+
+   Story #3 (Detect significant price dip):
+
+     - Clarified function works with any data in Firestore (test or real)
+     - Added detailed demo instructions: how to seed test data, what scenarios to demo
+     - Shows both positive (dip detected) and negative (no dip) test cases
+
+   Now both stories are properly demoable without waiting for real-world conditions. The key insight: the function doesn't need to know if data is "test" or "real" - it just
+   processes whatever is in Firestore. This means we can seed test data to create demo scenarios.
+
+   Ready to create story #4 (Receive SMS with price info)?
+
+   How are we distinguishing between test and real data? Let's ask our lead engineer again.
+
+      We're not distinguishing between test and real data - and that's a problem.
+
+   If I seed Firestore with 14 days of test data at $95k to demo the dip detection, then the system goes live and starts fetching real prices... now we have a mix of fake and
+   real data in the same collection. That pollutes our production data.
+
+   Options:
+
+     - Separate Firestore collections/databases for test vs prod
+       - Test: bitcoin_prices_test collection
+       - Prod: bitcoin_prices collection
+       - Function needs environment variable or config to know which to use
+       - Clean separation, but adds complexity
+     - Use separate GCP projects entirely
+       - Test project for demos with test data
+       - Prod project for real operation
+       - Cleanest separation, industry standard
+       - Can demo in test environment without affecting prod
+     - Accept that we delete test data before going live
+       - Seed test data for demo
+       - Delete it all before launching the pilot
+       - Simple but risky (might forget, data loss risk)
+     - Add a flag to each record: {...price data..., is_test: true/false}
+       - Function can filter test data out of calculations
+       - Keeps data mixed but marked
+       - Messy
+
+   My recommendation: Option 2 - separate GCP projects. Standard practice, clean separation, no risk of contaminating prod data. We demo in the test project, run the pilot in
+   prod.
+
+   What do you think?
+
+   I am not a lead engineer, but I think if we have only one developer then we need only dev and prod environments and we can simply use a test collection and environment
+   variables. If we scale up we're likely to need a proper staging environment to demonstrate the latest integrated code. Right? 
+
+   I am not a lead engineer, but I think if we have only one developer then we need only dev and prod environments and we can simply use a test collection and environment 
+   variables. If we scale up we're likely to need a proper staging environment to demonstrate the latest integrated code. Right?
+
+ ● You're absolutely right. For a single developer:
+
+   Dev environment:
+
+     - Uses test Firestore collections (bitcoin_prices_test, dip_events_test)
+     - Environment variable: ENVIRONMENT=dev or similar
+     - Can seed with test data freely
+     - Used for development and demos
+
+   Prod environment:
+
+     - Uses production collections (bitcoin_prices, dip_events)
+     - Environment variable: ENVIRONMENT=prod
+     - Real data only
+     - The actual 3-month pilot
+
+   Same GCP project, different collections based on environment variable. Simple and sufficient for one developer.
+
+   Later, if the team grows, you'd add:
+
+   Staging environment:
+
+     - Separate GCP project/environment
+     - Latest integrated code
+     - Used for UAT and demos to stakeholders
+     - Can be reset/reseeded as needed
+
+   But for now, dev + prod with collection switching is pragmatic.
+
+   Should we update the stories to reflect this? Add notes about:
+
+     - Function reads ENVIRONMENT variable to determine which collections to use
+     - Demo uses dev environment with test collections
+     - Prod uses production collections
+
+     Um, I feel that may be a bit pedantic for a developer. But maybe there is some value in a note to this effect. What does our QA think?
+
+    As the QA:
+
+   I need to know which environment I'm testing in - otherwise I might:
+
+     - Accidentally run tests against prod data
+     - Not know if test failures are due to stale/wrong test data
+     - Pollute prod with test executions during testing
+
+   What I actually need documented:
+
+     - Clear test data setup instructions - "Before testing, ensure dev environment has X, Y, Z seeded"
+     - How to verify I'm in the right environment - "Check logs show 'using bitcoin_prices_test collection'" or similar
+     - Expected behaviour in each environment - dev can be manually triggered anytime, prod only runs on schedule
+
+   I don't need:
+
+     - Implementation details about environment variables
+     - Technical architecture decisions
+
+   A simple note would help:
+
+     "Testing and demos use dev environment with test data collections. Production pilot uses prod environment with real data. Dev can be manually triggered; prod runs on
+     schedule only."
+
+   That's enough for me to know:
+
+     - Which environment to test in
+     - That I won't break prod by testing
+     - How environments differ behaviourally
+
+   Not too prescriptive about how it's implemented, but clear about what the environments are for.
+
+   ok so do you need to update either of our stories?
+
+ ● Let me think... 
+
+   Story #2 (Fetch price): Already says "manually triggerable for testing and demos" - that covers it.
+
+   Story #3 (Detect dip): Already has demo instructions that say "seed Firestore with test data" and "trigger manually" - that implicitly means a test/dev environment.
+
+   I think they're actually fine as-is. The stories describe the user-facing behaviour and how to demo them. The implementation detail of how we separate test from prod
+   (environment variables, collection names, etc.) is something the developer figures out during implementation.
+
+   Adding environment variable specifics would be too prescriptive - we're telling the developer what to build (dip detection that's demoable), not how to build it (use this
+   specific env var pattern).
+
+   No updates needed. The stories already imply testability without being overly technical. Does that seem right to you?
+
+   Do you think a dev would just know how to implement the stats here in story #3?
+
+    The story says:
+
+     - "z-score = (current_price - mean) / std_dev, where dip is z-score < -1.0"
+     - "Uses 14-day rolling window for mean and standard deviation calculation"
+
+   What's clear:
+
+     - The formula for z-score
+     - The threshold (-1.0)
+     - Use 14 days of data
+
+   What's unclear:
+
+     - Which standard deviation formula? (Population vs sample - divide by n or n-1?)
+     - How to handle missing days in the 14-day window?
+     - Should it be exactly 14 days back, or last 14 records?
+     - What if there are multiple prices per day (from testing)?
+
+   We have working code in /code/analyze_bitcoin_patterns.py from our research. Should we reference that in the story as the source of truth for the algorithm? Something like:
+
+     "Algorithm implementation based on analysis in /code/analyze_bitcoin_patterns.py - see detect_dip() function for reference."
+
+   That way the dev has a clear implementation guide without us writing pseudocode in the story. What do you think?
+
+   I think you need to include some references to background material here yes. We can't assume that an engineer knows what a z score is or how to code one.
+
+
+
+
+   TAKEAWAYS
+
+   * Use instructions and templates to guide the AI
+   * Feed back what you learn from working with the AI into improving these
+   * Don't just ask it to do a thing - tell it to ask you questions one at a time
+   * Don't just correct errors - ask it if it can see them itself
+   * Ask it to play roles - e.g. you are the QA
+   * It won't simply do the work for you  - be a sounding board for each other
+   * Get AI to try the work and you critique it - rather than the other way around
+
+   TECHNIQUES
+
+   * write markdown
+   * use the command line
+   * use clis
+   * I don't know how well it works across sessions
+
+   NEXT STEPS FOR ME
+
+  * publish the presentation
+   * Find out how easily this replicates across sessions
+   * Polish and publish instructions
+
+   NEXT STEPS FOR YOU
+
+   * Just try it
+
+

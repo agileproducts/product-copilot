@@ -1,0 +1,383 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 850">
+  <!-- Title -->
+  <text x="800" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Bitcoin Sniper - Story Map
+  </text>
+  
+  <!-- Legend -->
+  <rect x="1350" y="50" width="220" height="100" fill="none" stroke="#999" stroke-width="1" rx="3"/>
+  <text x="1460" y="70" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Legend</text>
+  <rect x="1360" y="80" width="70" height="22" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+  <text x="1445" y="95" font-size="10" text-anchor="start" fill="#333">Steel Thread</text>
+  <rect x="1360" y="107" width="70" height="22" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+  <text x="1445" y="122" font-size="10" text-anchor="start" fill="#333">Release 1 MVP</text>
+  <rect x="1360" y="134" width="70" height="22" fill="#fff3e0" stroke="#f57c00" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="1445" y="149" font-size="10" text-anchor="start" fill="#333">Future iteration</text>
+  
+  <!-- Iteration 0 Callout -->
+  <rect x="30" y="60" width="1300" height="55" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"/>
+  <text x="50" y="82" font-size="13" font-weight="bold" fill="#c62828">
+    Iteration 0 (Infrastructure Setup - Not User Stories)
+  </text>
+  <text x="50" y="100" font-size="10" fill="#555">
+    Tasks: Create GCP project • Enable APIs • Setup Firestore • Configure Twilio/SendGrid accounts • Create deployment pipeline • Configure Cloud Scheduler
+  </text>
+  
+  <!-- User Activities (Top Row) -->
+  <rect x="30" y="145" width="240" height="45" fill="#37474f" rx="5"/>
+  <text x="150" y="172" font-size="13" font-weight="bold" text-anchor="middle" fill="white">
+    Observe Bitcoin Prices
+  </text>
+  
+  <rect x="290" y="145" width="240" height="45" fill="#37474f" rx="5"/>
+  <text x="410" y="172" font-size="13" font-weight="bold" text-anchor="middle" fill="white">
+    Identify Buying Opportunities
+  </text>
+  
+  <rect x="550" y="145" width="240" height="45" fill="#37474f" rx="5"/>
+  <text x="670" y="172" font-size="13" font-weight="bold" text-anchor="middle" fill="white">
+    Get Alerted to Act
+  </text>
+  
+  <rect x="810" y="145" width="240" height="45" fill="#37474f" rx="5"/>
+  <text x="930" y="172" font-size="13" font-weight="bold" text-anchor="middle" fill="white">
+    Track What Happened
+  </text>
+  
+  <rect x="1070" y="145" width="240" height="45" fill="#37474f" rx="5"/>
+  <text x="1190" y="172" font-size="13" font-weight="bold" text-anchor="middle" fill="white">
+    Trust System Works
+  </text>
+  
+  <!-- Steel Thread Line -->
+  <line x1="20" y1="210" x2="1320" y2="210" stroke="#1976d2" stroke-width="3"/>
+  <text x="670" y="205" font-size="11" font-weight="bold" text-anchor="middle" fill="#1976d2">
+    STEEL THREAD (Walking Skeleton)
+  </text>
+  
+  <!-- Steel Thread Stories (Blue) -->
+  
+  <!-- Observe Bitcoin Prices -->
+  <rect x="30" y="220" width="240" height="90" fill="#bbdefb" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="150" y="240" font-size="12" font-weight="bold" text-anchor="middle" fill="#000">
+    Fetch daily Bitcoin price
+  </text>
+  <text x="150" y="260" font-size="9" text-anchor="middle" fill="#333">
+    GIVEN it's 08:30 weekday
+  </text>
+  <text x="150" y="273" font-size="9" text-anchor="middle" fill="#333">
+    WHEN system runs
+  </text>
+  <text x="150" y="286" font-size="9" text-anchor="middle" fill="#333">
+    THEN fetch BTC price from Coinbase
+  </text>
+  <text x="150" y="299" font-size="9" text-anchor="middle" fill="#333">
+    AND store with timestamp
+  </text>
+  
+  <!-- Identify Buying Opportunities -->
+  <rect x="290" y="220" width="240" height="90" fill="#bbdefb" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="410" y="240" font-size="12" font-weight="bold" text-anchor="middle" fill="#000">
+    Detect significant price dip
+  </text>
+  <text x="410" y="260" font-size="9" text-anchor="middle" fill="#333">
+    GIVEN 14 days price history
+  </text>
+  <text x="410" y="273" font-size="9" text-anchor="middle" fill="#333">
+    WHEN price drops &gt;1σ below mean
+  </text>
+  <text x="410" y="286" font-size="9" text-anchor="middle" fill="#333">
+    THEN identify as buying opportunity
+  </text>
+  <text x="410" y="299" font-size="9" text-anchor="middle" fill="#333">
+    AND calculate z-score
+  </text>
+  
+  <!-- Get Alerted to Act -->
+  <rect x="550" y="220" width="240" height="90" fill="#bbdefb" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="670" y="240" font-size="12" font-weight="bold" text-anchor="middle" fill="#000">
+    Receive SMS with price info
+  </text>
+  <text x="670" y="260" font-size="9" text-anchor="middle" fill="#333">
+    GIVEN dip detected
+  </text>
+  <text x="670" y="273" font-size="9" text-anchor="middle" fill="#333">
+    WHEN alert triggered
+  </text>
+  <text x="670" y="286" font-size="9" text-anchor="middle" fill="#333">
+    THEN receive SMS with current price,
+  </text>
+  <text x="670" y="299" font-size="9" text-anchor="middle" fill="#333">
+    mean, and z-score within 30 mins
+  </text>
+  
+  <!-- Track What Happened -->
+  <rect x="810" y="220" width="240" height="90" fill="#bbdefb" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="930" y="240" font-size="12" font-weight="bold" text-anchor="middle" fill="#000">
+    See what dips were detected
+  </text>
+  <text x="930" y="260" font-size="9" text-anchor="middle" fill="#333">
+    GIVEN pilot running
+  </text>
+  <text x="930" y="273" font-size="9" text-anchor="middle" fill="#333">
+    WHEN I query Cloud Logging
+  </text>
+  <text x="930" y="286" font-size="9" text-anchor="middle" fill="#333">
+    THEN see log of all dip events
+  </text>
+  <text x="930" y="299" font-size="9" text-anchor="middle" fill="#333">
+    with date, price, and z-score
+  </text>
+  
+  <!-- Trust System Works -->
+  <rect x="1070" y="220" width="240" height="90" fill="#bbdefb" stroke="#1976d2" stroke-width="3" rx="3"/>
+  <text x="1190" y="240" font-size="12" font-weight="bold" text-anchor="middle" fill="#000">
+    Know when system fails
+  </text>
+  <text x="1190" y="260" font-size="9" text-anchor="middle" fill="#333">
+    GIVEN function fails to run
+  </text>
+  <text x="1190" y="273" font-size="9" text-anchor="middle" fill="#333">
+    WHEN error occurs
+  </text>
+  <text x="1190" y="286" font-size="9" text-anchor="middle" fill="#333">
+    THEN receive email notification
+  </text>
+  <text x="1190" y="299" font-size="9" text-anchor="middle" fill="#333">
+    from Cloud Monitoring
+  </text>
+  
+  <!-- Release 1 Line -->
+  <line x1="20" y1="330" x2="1320" y2="330" stroke="#388e3c" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="670" y="325" font-size="11" font-weight="bold" text-anchor="middle" fill="#388e3c">
+    Release 1 (Complete MVP for Pilot)
+  </text>
+  
+  <!-- Release 1 Stories (Green) -->
+  
+  <!-- Observe Bitcoin Prices - Enhancement -->
+  <rect x="30" y="340" width="240" height="85" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="150" y="360" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Recover from API failures
+  </text>
+  <text x="150" y="378" font-size="8" text-anchor="middle" fill="#333">
+    GIVEN Coinbase API fails
+  </text>
+  <text x="150" y="390" font-size="8" text-anchor="middle" fill="#333">
+    WHEN fetching price
+  </text>
+  <text x="150" y="402" font-size="8" text-anchor="middle" fill="#333">
+    THEN retry 3 times with backoff
+  </text>
+  <text x="150" y="414" font-size="8" text-anchor="middle" fill="#333">
+    AND log failure if all retries fail
+  </text>
+  
+  <!-- Identify Buying Opportunities - Enhancement -->
+  <rect x="290" y="340" width="240" height="85" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="410" y="360" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Show historical context in alert
+  </text>
+  <text x="410" y="378" font-size="8" text-anchor="middle" fill="#333">
+    GIVEN dip detected
+  </text>
+  <text x="410" y="390" font-size="8" text-anchor="middle" fill="#333">
+    WHEN building alert message
+  </text>
+  <text x="410" y="402" font-size="8" text-anchor="middle" fill="#333">
+    THEN include 14-day low price
+  </text>
+  <text x="410" y="414" font-size="8" text-anchor="middle" fill="#333">
+    AND days since last similar dip
+  </text>
+  
+  <!-- Get Alerted to Act - Enhancement -->
+  <rect x="550" y="340" width="240" height="85" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="670" y="360" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Get email if SMS fails
+  </text>
+  <text x="670" y="378" font-size="8" text-anchor="middle" fill="#333">
+    GIVEN SMS delivery fails
+  </text>
+  <text x="670" y="390" font-size="8" text-anchor="middle" fill="#333">
+    WHEN Twilio returns error
+  </text>
+  <text x="670" y="402" font-size="8" text-anchor="middle" fill="#333">
+    THEN send email via SendGrid
+  </text>
+  <text x="670" y="414" font-size="8" text-anchor="middle" fill="#333">
+    with same alert content
+  </text>
+  
+  <!-- Track What Happened - Enhancement -->
+  <rect x="810" y="340" width="240" height="85" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="930" y="360" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    See alert delivery status
+  </text>
+  <text x="930" y="378" font-size="8" text-anchor="middle" fill="#333">
+    GIVEN alerts sent
+  </text>
+  <text x="930" y="390" font-size="8" text-anchor="middle" fill="#333">
+    WHEN I query logs
+  </text>
+  <text x="930" y="402" font-size="8" text-anchor="middle" fill="#333">
+    THEN see SMS/email success/failure
+  </text>
+  <text x="930" y="414" font-size="8" text-anchor="middle" fill="#333">
+    for each alert attempt
+  </text>
+  
+  <!-- Trust System Works - Enhancement -->
+  <rect x="1070" y="340" width="240" height="85" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="1190" y="360" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Detect missed executions
+  </text>
+  <text x="1190" y="378" font-size="8" text-anchor="middle" fill="#333">
+    GIVEN function should run daily
+  </text>
+  <text x="1190" y="390" font-size="8" text-anchor="middle" fill="#333">
+    WHEN 26 hours pass with no run
+  </text>
+  <text x="1190" y="402" font-size="8" text-anchor="middle" fill="#333">
+    THEN Cloud Monitoring sends
+  </text>
+  <text x="1190" y="414" font-size="8" text-anchor="middle" fill="#333">
+    warning email
+  </text>
+  
+  <!-- Future Iteration Line -->
+  <line x1="20" y1="445" x2="1320" y2="445" stroke="#f57c00" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="670" y="440" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57c00">
+    Future Iterations (Build During Pilot Based on Learning)
+  </text>
+  
+  <!-- Future Iteration Stories (Orange - dotted border) -->
+  
+  <rect x="290" y="455" width="240" height="75" fill="#fff3e0" stroke="#f57c00" stroke-width="1" stroke-dasharray="3,3" rx="3"/>
+  <text x="410" y="473" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Tune detection threshold
+  </text>
+  <text x="410" y="490" font-size="8" text-anchor="middle" fill="#555">
+    GIVEN alerts too frequent/rare
+  </text>
+  <text x="410" y="502" font-size="8" text-anchor="middle" fill="#555">
+    WHEN I adjust config
+  </text>
+  <text x="410" y="514" font-size="8" text-anchor="middle" fill="#555">
+    THEN threshold changes without redeploy
+  </text>
+  
+  <rect x="550" y="455" width="240" height="75" fill="#fff3e0" stroke="#f57c00" stroke-width="1" stroke-dasharray="3,3" rx="3"/>
+  <text x="670" y="473" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Limit alert frequency
+  </text>
+  <text x="670" y="490" font-size="8" text-anchor="middle" fill="#555">
+    GIVEN multiple dips in short period
+  </text>
+  <text x="670" y="502" font-size="8" text-anchor="middle" fill="#555">
+    WHEN cooldown rule active
+  </text>
+  <text x="670" y="514" font-size="8" text-anchor="middle" fill="#555">
+    THEN receive max 1 alert per week
+  </text>
+  
+  <rect x="810" y="455" width="240" height="75" fill="#fff3e0" stroke="#f57c00" stroke-width="1" stroke-dasharray="3,3" rx="3"/>
+  <text x="930" y="473" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">
+    Compare performance to DCA
+  </text>
+  <text x="930" y="490" font-size="8" text-anchor="middle" fill="#555">
+    GIVEN pilot period complete
+  </text>
+  <text x="930" y="502" font-size="8" text-anchor="middle" fill="#555">
+    WHEN I run analysis
+  </text>
+  <text x="930" y="514" font-size="8" text-anchor="middle" fill="#555">
+    THEN see dip-buying vs DCA profit
+  </text>
+  
+  <!-- Summary Box -->
+  <rect x="30" y="560" width="1300" height="260" fill="#fafafa" stroke="#999" stroke-width="1" rx="5"/>
+  <text x="680" y="585" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+    Story Map Reading Guide
+  </text>
+  
+  <!-- Left column -->
+  <text x="50" y="610" font-size="11" font-weight="bold" fill="#333">
+    User Activities (Dark Grey Boxes)
+  </text>
+  <text x="50" y="627" font-size="10" fill="#555">
+    Read left-to-right to understand the user's journey.
+  </text>
+  <text x="50" y="642" font-size="10" fill="#555">
+    These aren't stories - they're the high-level things
+  </text>
+  <text x="50" y="657" font-size="10" fill="#555">
+    users do. Stories live underneath them.
+  </text>
+  
+  <text x="50" y="680" font-size="11" font-weight="bold" fill="#333">
+    Steel Thread (Blue, Thick Border)
+  </text>
+  <text x="50" y="697" font-size="10" fill="#555">
+    The minimal end-to-end slice. Read across the top row
+  </text>
+  <text x="50" y="712" font-size="10" fill="#555">
+    of stories left-to-right - this is your walking skeleton.
+  </text>
+  <text x="50" y="727" font-size="10" fill="#555">
+    Build and deploy this first to prove the system works.
+  </text>
+  
+  <text x="50" y="750" font-size="11" font-weight="bold" fill="#333">
+    Dependencies Flow Left-to-Right
+  </text>
+  <text x="50" y="767" font-size="10" fill="#555">
+    Stories generally depend on those to their left.
+  </text>
+  <text x="50" y="782" font-size="10" fill="#555">
+    Build in sequence across the row, then add depth below.
+  </text>
+  
+  <!-- Right column -->
+  <text x="700" y="610" font-size="11" font-weight="bold" fill="#333">
+    Release 1 Stories (Green)
+  </text>
+  <text x="700" y="627" font-size="10" fill="#555">
+    Enhancements that make the steel thread robust and
+  </text>
+  <text x="700" y="642" font-size="10" fill="#555">
+    complete. Add error handling, historical context, fallbacks.
+  </text>
+  <text x="700" y="657" font-size="10" fill="#555">
+    Steel Thread + Release 1 = MVP ready for 3-month pilot.
+  </text>
+  
+  <text x="700" y="680" font-size="11" font-weight="bold" fill="#333">
+    Future Iterations (Orange, Dashed)
+  </text>
+  <text x="700" y="697" font-size="10" fill="#555">
+    Stories to build based on pilot learning. Don't build these
+  </text>
+  <text x="700" y="712" font-size="10" fill="#555">
+    upfront - wait to see what's actually needed. Priorities
+  </text>
+  <text x="700" y="727" font-size="10" fill="#555">
+    will change based on real usage patterns.
+  </text>
+  
+  <text x="700" y="750" font-size="11" font-weight="bold" fill="#333">
+    Iteration 0 (Red Box at Top)
+  </text>
+  <text x="700" y="767" font-size="10" fill="#555">
+    Infrastructure setup tasks. Not user stories - just
+  </text>
+  <text x="700" y="782" font-size="10" fill="#555">
+    prerequisites. Do these before starting story work.
+  </text>
+  
+  <!-- Bottom note -->
+  <rect x="50" y="795" width="1260" height="18" fill="#e3f2fd" rx="2"/>
+  <text x="680" y="808" font-size="10" font-style="italic" text-anchor="middle" fill="#1565c0">
+    Next step: Write full acceptance criteria for steel thread stories and mark them "ready for dev"
+  </text>
+</svg>
