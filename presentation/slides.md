@@ -2,6 +2,20 @@
 
 ---
 
+![Copilot splash screen](copilot-splash.png)
+
+--
+
+<div class="myprompt">
+&gt; npm install -g @github/copilot
+</div>
+
+<div class="myprompt">
+&gt; copilot
+</div>
+
+---
+
 <div class="myprompt">
 &gt; read instructions.md and tell me what you think
 we are going to do
@@ -834,4 +848,62 @@ Staging environment:
 - Can be reset/reseeded as needed
 
 But for now, dev + prod with collection switching is pragmatic.
+</div>
+
+---
+
+## And so on...
+
+---
+<div class="myprompt">
+
+## Learnings so far
+
+ - ✅ Write instructions and templates for the AI to use
+ - ❌ Do all the work and ask the AI for feedback on it
+ - ✅ Ask the AI to do the work and you give feedback on it
+ - ❌ Ask the AI to do a big task in one go
+ - ✅ Tell it to ask you questions and build via dialogue
+ - ❌ Simply correct what it gets wrong
+ - ✅ Work like a coach - encourage it to think through the problem
+ - ✅ Ask the AI to play roles - e.g. 'you are the QA'
+ - ✅ Feed back what you learn into your instructions files
+ - ✅ Embrace the command line
+ - ✅ Write in machine-readable formats like markdown
+  
+</div>
+
+---
+
+<div class="myprompt">
+
+## Next steps
+
+**For me:**
+
+ - Iterate on the instructions and publish them
+ - See if these ideas can be applied systematically
+ - Explore further
+
+
+**For you:**
+
+- Try it!
+
+</div>
+
+---
+<div class="myprompt">
+
+## Resources
+
+* [Github Copilot](https://github.com/features/copilot)
+* [Github CLI](https://github.com/features/copilot/cli)
+* [Using the command line](https://www.makeuseof.com/tag/beginners-guide-mac-terminal/)
+* [Markdown](https://www.markdownguide.org/basic-syntax/)
+* [Atlassian CLI](https://www.atlassian.com/blog/jira/atlassian-command-line-interface)
+
+* [How I AI podcast](https://www.youtube.com/watch?v=rwmR7m5rvqw) - how this PM uses AI for PRDs, JIRA tickets, and replying to coworkers
+* [Teresa Torres blog](https://www.producttalk.org/how-to-choose-which-tasks-to-automate-with-ai/)  - how I choose what tasks to automate with AI
+
 </div>
