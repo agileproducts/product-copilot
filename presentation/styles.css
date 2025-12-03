@@ -33,6 +33,10 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+.smaller {
+  font-size: 0.35em
+}
+
 .doc {
   color: #FFFFFF;
   background-color: #0d1117;

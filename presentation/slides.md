@@ -416,20 +416,20 @@ Cohn's story splitting patterns include:
 &gt;How do Cohn's guidelines on sizing and spliting stories compare to those in Jeff Patton's book 'User Story Mapping'?
 </div>
 
-<div class="copilot-response">
+<div class="copilot-response smaller">
 I'm familiar with Jeff Patton's "User Story Mapping" (2014), which came a decade after Cohn and reflects evolved thinking. Key differences:
 
-    - Patton on splitting: Emphasizes horizontal slicing - cutting through the full stack to deliver thin end-to-end functionality. This is the "walking skeleton" / "steel thread" approach. Cohn's patterns are more tactical; Patton's is more strategic about delivering complete user value early.
+* Patton on splitting: Emphasizes horizontal slicing - cutting through the full stack to deliver thin end-to-end functionality. This is the "walking skeleton" / "steel thread" approach. Cohn's patterns are more tactical; Patton's is more strategic about delivering complete user value early.
 
-    - Patton's "release strategy": Uses the story map to define MVPs by drawing horizontal lines - "everything above this line is Release 1". Less about individual story size, more about what collection of stories delivers a coherent release.
+* Patton's "release strategy": Uses the story map to define MVPs by drawing horizontal lines - "everything above this line is Release 1". Less about individual story size, more about what collection of stories delivers a coherent release.
 
-    - Patton on sizing: Stories should be sized for learning, not just estimation. Build the smallest thing that lets you validate assumptions. This aligns with modern continuous delivery better than Scrum sprint sizing
+* Patton on sizing: Stories should be sized for learning, not just estimation. Build the smallest thing that lets you validate assumptions. This aligns with modern continuous delivery better than Scrum sprint sizing
      
-    - Opening the box: Patton talks about "opening the box" on a story - breaking it down only when you're ready to work on it, not upfront. This is more compatible with distributed teams needing clarity - detail comes at the right time.
+* Opening the box: Patton talks about "opening the box" on a story - breaking it down only when you're ready to work on it, not upfront. This is more compatible with distributed teams needing clarity - detail comes at the right time.
      
-    - Narrative flow: Patton emphasizes the story map should tell the user's journey left-to-right. This is what I tried with attempt 2.
+* Narrative flow: Patton emphasizes the story map should tell the user's journey left-to-right. This is what I tried with attempt 2.
      
-    - Does Patton's approach resonate more with how you work?
+Does Patton's approach resonate more with how you work?
 </div>
 
 --
@@ -438,28 +438,17 @@ I'm familiar with Jeff Patton's "User Story Mapping" (2014), which came a decade
 &gt;Has anyone else been an influential thinker on user stories since this?
 </div>
 
-<div class="copilot-response">
+<div class="copilot-response smaller">
 
- ● Some influential voices on user stories and product work since Patton (2014):
+Some influential voices on user stories and product work since Patton (2014):
+ * Gojko Adzic - "Impact Mapping" and "Specification by Example" - focuses on connecting stories to business outcomes and using concrete examples as acceptance criteria. Veryaligned with your preference for clear definition and testability.
+ * Teresa Torres - "Continuous Discovery Habits" (2021) - emphasizes opportunity solution trees and connecting stories to user outcomes through ongoing discovery. Less about story format, more about ensuring you're solving the right problems.
+ * Marty Cagan - "Inspired" / "Empowered" - advocates for outcome-based product teams over feature factories. Questions whether detailed user stories are even necessary if teams focus on problems to solve rather than features to build.
+ * Kent Beck / Extreme Programming community - "Vertical slicing" techniques that emphasize thin end-to-end functionality over horizontal layers, closely related to steel threads.
+ * Shape Up (Basecamp/37signals) - Jason Fried and DHH's approach uses "pitches" and "scopes" instead of user stories, focusing on appetite (time budget) rather than estimation.
+ * #NoEstimates movement - Vasco Duarte and others questioning whether estimation adds value at all, focusing instead on breaking work small and measuring flow.
 
-   Gojko Adzic - "Impact Mapping" and "Specification by Example" - focuses on connecting stories to business outcomes and using concrete examples as acceptance criteria. Very
-   aligned with your preference for clear definition and testability.
-
-   Teresa Torres - "Continuous Discovery Habits" (2021) - emphasizes opportunity solution trees and connecting stories to user outcomes through ongoing discovery. Less about
-   story format, more about ensuring you're solving the right problems.
-
-   Marty Cagan - "Inspired" / "Empowered" - advocates for outcome-based product teams over feature factories. Questions whether detailed user stories are even necessary if
-   teams focus on problems to solve rather than features to build.
-
-   Kent Beck / Extreme Programming community - "Vertical slicing" techniques that emphasize thin end-to-end functionality over horizontal layers, closely related to steel
-   threads.
-
-   Shape Up (Basecamp/37signals) - Jason Fried and DHH's approach uses "pitches" and "scopes" instead of user stories, focusing on appetite (time budget) rather than
-   estimation.
-
-   #NoEstimates movement - Vasco Duarte and others questioning whether estimation adds value at all, focusing instead on breaking work small and measuring flow.
-
-   Are any of these approaches familiar to you, or influencing your thinking on Bitcoin Sniper?
+Are any of these approaches familiar to you, or influencing your thinking on Bitcoin Sniper?
 </div>
 
 --
@@ -480,4 +469,369 @@ I'm familiar with Jeff Patton's "User Story Mapping" (2014), which came a decade
 
 ---
 
-!["story map first attempt"](story-map.svg)
+!["story map"](story-map.svg)
+
+---
+
+<div class="myprompt">
+&gt; Ok let's start by trying to add the first story
+</div>
+
+---
+
+!["picture of first story"](story2.png)
+
+--
+
+<div class="myprompt">
+&gt;  How would you showcase or demo that this story is done?
+</div>
+
+--
+
+<div class="copilot-response smaller">
+Good question. For "Fetch daily Bitcoin price", I'd demonstrate:
+
+Live demo:
+  - Trigger the Cloud Function manually (via GCP Console or gcloud CLI)
+  - Show it executing successfully (function logs showing "fetching price...")
+  - Query Firestore to show the new price record with today's timestamp
+  - Show the logged output with the actual price fetched
+
+Alternatively, if the scheduled run already happened:
+  - Open Firestore console and show the bitcoin_prices collection
+  - Point to today's entry with timestamp ~08:30
+  - Show Cloud Function execution logs from this morning confirming it ran
+
+The key is: there's a new price record in Firestore that wasn't there before, with today's date.
+
+But this highlights a potential issue with the story - it's mixing two concerns:
+  - Fetching the price (the API call)
+  - Storing it (persistence)
+
+Should we split this? Or is it small enough that fetching without storing has no user value, so they belong together in the steel thread?
+</div>
+
+--
+
+<div class="myprompt">
+&gt; If I were an engineer building this I'd definitely get 'fetch' working first, them 'store' and finally 'schedule'. Without store, it's very difficult to prove 'schedule' is working. But there is a risk here of breaking the story into technical tasks that don't deliver demoable value, right? 
+</div>
+
+--
+
+<div class="copilot-response smaller">
+Exactly - you've hit the classic tension. As an engineer, the natural build order is:
+
+  - Fetch - call API, log response to console
+  - Store - persist to Firestore  
+  - Schedule - Cloud Scheduler triggers it daily
+
+But only at step 3 do you have something truly demoable to a stakeholder who cares about the business value, not the technical implementation.
+
+Options:
+
+A) Keep story as-is - "Fetch daily Bitcoin price" includes all three technical steps. It's small (maybe 1-2 days), delivers complete value. Demo shows: "it ran this morning at 08:30 and stored the price."
+
+B) Split into two stories:
+
+  - "Fetch and store Bitcoin price" (manually triggered for now)
+  - "Schedule daily price fetch" (add the scheduler)
+
+First story is demoable: "I can manually trigger it and see the price in Firestore." Second adds automation.
+
+C) Accept the steel thread story is slightly larger - it's the minimum viable slice, so it includes all the plumbing even if that's a few days of work.
+
+I lean toward A - keep it together. The story is still small, and splitting creates a first story that's only half-useful. What's your instinct?
+</div>
+
+--
+<div class="myprompt">
+&gt;Well what I'd do here is ask how much work things are - I don't want stories that are too big. But since you are estimating 1-2 days for the complete story, lets go with option A.
+</div>
+
+<div class="myprompt">
+&gt;Now pretend you are a QA, What do you think you're going to ask about this story?
+</div>
+
+--
+
+<div class="copilot-response smaller">
+As a QA, I'd ask:
+
+Error scenarios:
+  - What happens if Coinbase API is down or returns an error? Do we retry? Log and continue? Alert someone?
+  - What if the API returns invalid data (null, negative number, malformed JSON)?
+  - What if Firestore write fails?
+
+Duplicate handling:
+  - If the function runs twice in the same day (manual trigger + scheduled), do we store both? Overwrite? Prevent duplicates?
+
+Data validation:
+  - What's a "reasonable" price range? Should we reject obviously wrong values (e.g., $1 or $10 million)?
+  - Do we validate the timestamp format?
+
+Observability:
+  - How do I verify it ran successfully without checking Firestore directly?
+  - What gets logged? Just "success" or the actual price fetched?
+
+Timezone edge cases:
+  - "08:30 London time" - what about DST transitions? (Though you said Cloud Scheduler handles this)
+  - What if it runs late (08:45)? Still valid?
+
+Acceptance criteria gaps:
+  - "fetched from Coinbase API" - what's the specific response structure we expect?
+  - "stored in Firestore" - what's the exact document structure (fields, types)?
+
+Most critical: error handling isn't specified. That's probably covered in a later Release 1 story ("Recover from API failures"), but should this story fail gracefully or just crash?
+</div>
+
+--
+
+<div class="myprompt">
+&gt;It should certainly not just crash. We have put alerting the user that the system is broken into a separate story, but this story should at least handle failure scenarios
+</div>
+
+<div class="copilot-response">
+You're right - this story needs to handle failures gracefully even if user alerting comes later. Let me update the issue to add error handling acceptance criteria.
+</div>
+
+---
+
+<div class="myprompt">
+&gt;Ok let's try adding the next story
+</div>
+
+<div class="copilot-response">
+Create second steel thread story
+  $ cd /Users/stephencornelius/Projects/product-copilot && gh issue create --label story --label backlog --title "Detect significant price dip" --body "## Description
+
+As an investor, I want the system to detect when Bitcoin price has dropped significantly below recent averages, so that I can be alerted to potential buying opportunities....
+    └ 53 lines...
+</div>
+
+--
+
+!["picture of first story"](story3.png)
+
+--
+
+<div class="copilot-response smaller">
+Created issue #3: "Detect significant price dip"
+
+This story covers:
+  - Happy path: Detects dip when z-score < -1.0
+  - No dip scenario: Normal prices don't trigger detection
+  - Insufficient data: Handles the first 13 days gracefully
+  - Error handling: Firestore query failures don't crash
+
+The story makes it clear:
+  - The detection algorithm (z-score calculation)
+  - What gets logged (dip events with all the stats)
+  - Dependencies on the first story
+  - The 14-day waiting period before full operation
+
+How would you demo this one? You'd need to either wait 14 days for real data, or seed Firestore with historical data to show it detecting a dip.
+</div>
+
+--
+
+<div class="myprompt">
+&gt;Pretend you are our lead engineer. Tell me why we are struggling to demo this?
+</div>
+
+--
+
+<div class="copilot-response smaller">
+As the lead engineer, here's my concern:
+
+We can't demo this story in isolation because:
+- No visible output - The story says "log the dip event" but logging to Firestore isn't something a stakeholder can easily see. There's no UI, no alert, nothing user-facing.
+- Demo requires manual inspection - To prove it works, I'd have to:
+- Open GCP Console
+- Navigate to Firestore
+- Query the dip_events collection
+- Show them a database record
+
+That's a technical demonstration, not a business value demonstration.
+
+The real user value comes in the next story - "Receive SMS with price info". That's when the user actually experiences something. They get an SMS on their phone. That's demoable.
+
+So we have a choice:
+
+- Keep stories as-is - accept that story #2 is only demoable to technical stakeholders via Firestore inspection
+- Combine stories #2 and #3 - "Detect dip and send SMS alert" becomes one story. It's bigger (maybe 2-3 days), but it delivers real user value you can demo by showing an SMS on your phone.
+
+The steel thread is supposed to be the minimal demoable slice. Right now, stories #2 and #3 together form that slice. Story #2 alone is infrastructure without user impact.
+
+What do you think - combine them?
+</div>
+
+--
+
+<div class="myprompt">
+&gt;No I think you are off track. Fetching the price, storing it, doing the stats, sending an SMS message where required - that would be a HUGE story. It's practically 'build the application'. Think about this second story a bit harder. We were ok with showcasing data logged to our store for the first story, bearing in mind that in this case our product has no web UI. But we're struggling to work out how to demo our alerting story. 
+</div>
+
+--
+
+<div class="copilot-response smaller">
+Ah, you're right - I was conflating two different issues. Let me think this through properly.
+
+- Story #1 (Fetch daily Bitcoin price): Easy to demo - open Firestore, show today's price record. Done.
+- Story #2 (Detect significant price dip): Also easy to demo in principle - show a dip event record in Firestore. BUT...
+
+The problem is: how do we trigger a dip for the demo?
+
+We can't just run the function and hope there's a real dip today. We need to either:
+
+- Seed Firestore with 14 days of synthetic data where day 15 is a dip
+- Temporarily adjust the threshold to make today's price count as a dip
+- Have a way to manually trigger detection with test data
+
+Without this, we're blocked on demonstrating story #2 - not because it doesn't have value, but because we can't reliably create the conditions for a dip during a demo.
+
+Story #3 (Receive SMS alert) has the same problem - we need a dip to occur to trigger the SMS. We can't demo the alert without being able to manufacture a dip condition.
+
+Solution: We need testability built in - either:
+
+- A test/demo mode that uses synthetic data
+- Ability to manually trigger with injected data
+- Lower the threshold temporarily for demo purposes
+
+Is this the issue you're highlighting?
+</div>
+
+--
+
+<div class="myprompt">
+&gt;Yes now I think you are getting it. What would I typically do to demonstrate any product? I can't usually do it by waiting for real customers on live can I?
+</div>
+
+--
+
+<div class="copilot-response smaller">
+Right! You'd use test data or a demo/test environment.
+
+For any product demo, you'd typically:
+
+- Use a test/staging environment with synthetic data
+- Have sample customers/accounts set up
+- Seed the system with known scenarios that showcase the features
+
+For our stories, we need the same approach:
+
+Story #2 (Detect dip): 
+- Seed Firestore with 14 days of test price data (e.g., prices around $95k)
+- Add today's test price as $89k (a clear dip)
+- Run the function
+- Show the dip event appears in Firestore
+
+Story #3 (Send SMS alert):
+- Use the same test data setup
+- Run the function
+- Show the SMS arrives on your phone
+
+This means we probably need to add acceptance criteria or notes about testability:
+- Function should be triggerable manually (not just by scheduler)
+- Should work with existing Firestore data (doesn't care if it's "real" or "test" data)
+- Or: have a test mode that uses a separate collection/environment
+
+Without this, we can't properly test OR demo these stories. Should we update the stories to explicitly address testability?
+</div>
+
+--
+
+<div class="myprompt">
+&gt;Yes
+</div>
+
+--
+
+<div class="copilot-response smaller">
+Done! Updated both stories with testability:
+
+Story #2 (Fetch daily Bitcoin price):
+- Added acceptance criteria for manual triggering
+- Added demo instructions: manually trigger, check logs, verify Firestore
+
+Story #3 (Detect significant price dip):
+- Clarified function works with any data in Firestore (test or real)
+- Added detailed demo instructions: how to seed test data, what scenarios to demo
+- Shows both positive (dip detected) and negative (no dip) test cases
+
+Now both stories are properly demoable without waiting for real-world conditions. The key insight: the function doesn't need to know if data is "test" or "real" - it just processes whatever is in Firestore. This means we can seed test data to create demo scenarios.
+</div>
+--
+
+<div class="myprompt">
+&gt;How are we distinguishing between test and real data? Let's ask our lead engineer again.
+</div>
+
+--
+
+<div class="copilot-response smaller">
+We're not distinguishing between test and real data - and that's a problem.
+
+If I seed Firestore with 14 days of test data at $95k to demo the dip detection, then the system goes live and starts fetching real prices... now we have a mix of fake and real data in the same collection. That pollutes our production data.
+
+Options:
+- Separate Firestore collections/databases for test vs prod
+  - Test: bitcoin_prices_test collection
+  - Prod: bitcoin_prices collection
+  - Function needs environment variable or config to know which to use
+  - Clean separation, but adds complexity
+- Use separate GCP projects entirely
+  - Test project for demos with test data
+  - Prod project for real operation
+  - Cleanest separation, industry standard
+  - Can demo in test environment without affecting prod
+- Accept that we delete test data before going live
+  - Seed test data for demo
+  - Delete it all before launching the pilot
+  - Simple but risky (might forget, data loss risk)
+- Add a flag to each record: {...price data..., is_test: true/false}
+  - Function can filter test data out of calculations
+  - Keeps data mixed but marked
+  - Messy
+
+My recommendation: Option 2 - separate GCP projects. Standard practice, clean separation, no risk of contaminating prod data. We demo in the test project, run the pilot in prod.
+
+What do you think?
+</div>
+
+--
+
+<div class="myprompt">
+&gt;I am not a lead engineer, but I think if we have only one developer then we need only dev and prod environments and we can simply use a test collection and environment variables. If we scale up we're likely to need a proper staging environment to demonstrate the latest integrated code. Right? 
+</div>
+
+--
+
+<div class="copilot-response smaller">
+You're absolutely right. For a single developer:
+
+Dev environment:
+- Uses test Firestore collections (bitcoin_prices_test, dip_events_test)
+- Environment variable: ENVIRONMENT=dev or similar
+- Can seed with test data freely
+- Used for development and demos
+
+Prod environment:
+- Uses production collections (bitcoin_prices, dip_events)
+- Environment variable: ENVIRONMENT=prod
+- Real data only
+- The actual 3-month pilot
+
+Same GCP project, different collections based on environment variable. Simple and sufficient for one developer.
+
+Later, if the team grows, you'd add:
+
+Staging environment:
+- Separate GCP project/environment
+- Latest integrated code
+- Used for UAT and demos to stakeholders
+- Can be reset/reseeded as needed
+
+But for now, dev + prod with collection switching is pragmatic.
+</div>
